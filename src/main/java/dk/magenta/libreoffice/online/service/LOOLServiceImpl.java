@@ -270,7 +270,7 @@ public class LOOLServiceImpl implements LOOLService {
                 wopiDiscoveryURL = new URL(wopiBaseURL.getProtocol() + wopiBaseURL.getHost() + wopiBaseURL.getPort()
                         + "/discovery");
                 logger.warn("******* Warning *******\nThe wopiDiscoveryURL param wasn't found in " +
-                        "alfresco-global.properties. \nWe will assume that the discovery.xml file is hosted on this" +
+                        "alfresco-global.properties. \nWe will assume that the discovery.xml file is hosted on this " +
                         "server and construct a url path based on this: "+ wopiDiscoveryURL.toString() );
             } catch (MalformedURLException mue) {
                 logger.error("=== Error ===\nUnable to create discovery URL. (Should never be thrown so this is an " +

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>dk.magenta</groupId>
     <artifactId>libreoffice-online-repo</artifactId>
@@ -12,9 +12,10 @@
 
     <properties>
         <!-- Alfresco Maven Plugin version to use -->
-        <alfresco.sdk.version>3.0.0</alfresco.sdk.version>
+        <alfresco.sdk.version>4.1.0</alfresco.sdk.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Alfresco Data directory, which will contain:
                 Content Store (i.e. the files we upload)
@@ -35,24 +36,25 @@
         <!-- Alfresco Platform webapp version, this is the original Alfresco webapp that will be
             customized and then deployed and run by the tomcat maven plugin when
             executing for example $ mvn clean install alfresco:run -->
-        <alfresco.platform.version>5.2.e</alfresco.platform.version>
+        <alfresco.platform.version>6.2.0-ga</alfresco.platform.version>
         <!-- Alfresco Share version, so we can bring in correct alfresco-share-services artifact -->
-        <alfresco.share.version>5.2.d</alfresco.share.version>
+        <alfresco.share.version>6.2.0</alfresco.share.version>
+        <tomcat.version>7.0.100</tomcat.version>
+        <maven.alfresco.tomcat.version>7.0.100</maven.alfresco.tomcat.version><!-- merged just for sdk 3: https://github.com/Alfresco/alfresco-sdk/pull/521 -->
 
         <!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
         <maven.alfresco.edition>community</maven.alfresco.edition>
 
 
         <!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
-        <jrebel.version>1.1.6</jrebel.version>
+        <jrebel.version>1.1.10</jrebel.version>
 
         <!-- Environment to use, Alfresco Maven Plugin will
              copy alfresco-global-*.properties files from this directory, such as src/test/properties/local -->
         <env>local</env>
 
-        <!-- Compile with Java 7, default is 5 -->
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <!-- This will import the dependencyManagement for all artifacts in the selected Alfresco platform.
@@ -65,7 +67,7 @@
         <dependencies>
             <dependency>
                 <groupId>${alfresco.groupId}</groupId>
-                <artifactId>alfresco-platform-distribution</artifactId>
+                <artifactId>alfresco-content-services-community-distribution</artifactId>
                 <version>${alfresco.platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -78,6 +80,7 @@
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
@@ -92,7 +95,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>3.2.17.RELEASE</version>
             <scope>test</scope>
         </dependency>
 
@@ -100,7 +102,6 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.2</version>
             <scope>test</scope>
         </dependency>
 
@@ -225,7 +226,6 @@
                             </resource>
                         </resources>
                     </classpath>
-
                     <!--
                       alwaysGenerate - default is false
                       If 'false' - rebel.xml is generated if timestamps of pom.xml and the current rebel.xml file are not equal.
@@ -343,6 +343,7 @@
             <url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>alfresco-plugin-public</id>
@@ -357,5 +358,4 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
 </project>

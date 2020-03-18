@@ -1,4 +1,8 @@
 *.iml
 .idea
+.project
+.settings
+.classpath
+*.log
 alf_data_dev
 target

@@ -92,6 +92,7 @@ public class LOOLCheckFileInfoWebScript extends DeclarativeWebScript {
             model.put("EnableOwnerTermination",  false);
         }
         catch(Exception ge){
+            logger.debug("exc", ge);
             throw new WebScriptException(Status.STATUS_BAD_REQUEST, "Error returning file nodeRef\nReason:\n"
                     + ge.getMessage());
         }

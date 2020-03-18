@@ -21,12 +21,7 @@ Add the following properties to your alfresco-global.properties file:
 - [ ] lool.wopi.url.discovery=https://host.domain/path-to-discovery.xml
 - [ ] lool.wopi.alfresco.host=https://alfresco.proxy-url-host.domain (Not important but used to get around proxy issues for now)
 
-### JDK 8+
-
-The page module evaluator requires JDK higher than or equal to version 8.<br/>
-Go to http://www.oracle.com/technetwork/java/javase/downloads/index.html and click on button "Download JDK".<br/>
-There are installation instructions on that page as well. To verify that your installation was successful, run "java -version" on the command line.<br/>
-That should print the installed version of your JDK.
+### JDK 11+
 
 ### Contributing
 

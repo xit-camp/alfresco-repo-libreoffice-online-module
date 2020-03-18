@@ -16,19 +16,28 @@ limitations under the License.
 */
 package dk.magenta.libreoffice.online;
 
-import dk.magenta.libreoffice.online.service.PersonInfo;
-import dk.magenta.libreoffice.online.service.WOPIAccessTokenInfo;
-import dk.magenta.libreoffice.online.service.WOPITokenService;
+import java.io.IOException;
+
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.security.authentication.AuthenticationUtil;
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
-import org.alfresco.service.cmr.repository.*;
-import org.apache.commons.lang.StringUtils;
+import org.alfresco.service.cmr.repository.ContentIOException;
+import org.alfresco.service.cmr.repository.ContentService;
+import org.alfresco.service.cmr.repository.ContentWriter;
+import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.NodeService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.extensions.webscripts.*;
+import org.springframework.extensions.webscripts.AbstractWebScript;
+import org.springframework.extensions.webscripts.Status;
+import org.springframework.extensions.webscripts.WebScriptException;
+import org.springframework.extensions.webscripts.WebScriptRequest;
+import org.springframework.extensions.webscripts.WebScriptResponse;
 
-import java.io.IOException;
+import dk.magenta.libreoffice.online.service.PersonInfo;
+import dk.magenta.libreoffice.online.service.WOPIAccessTokenInfo;
+import dk.magenta.libreoffice.online.service.WOPITokenService;
 
 public class LOOLPutFileWebScript extends AbstractWebScript {
     private static final Log logger = LogFactory.getLog(LOOLPutFileWebScript.class);

@@ -21,7 +21,8 @@ Add the following properties to your alfresco-global.properties file:
 - [ ] lool.wopi.url.discovery=https://host.domain/path-to-discovery.xml
 - [ ] lool.wopi.alfresco.host=https://alfresco.proxy-url-host.domain (Not important but used to get around proxy issues for now)
 
-### JDK 11+
+### JDK 11+ & Alfresco 6.2.0
+https://github.com/Alfresco/alfresco-repository/wiki/ACS-6-Migration-Guide
 
 ### Contributing
 

@@ -44,3 +44,6 @@ After you've done that you can create issues in https://github.com/magenta-aps/l
 
 - [ ] Register edit action in audit log.
 - [ ] implement option to lock editing to one user at a time.
+
+### See also
+https://github.com/magenta-aps/alfresco-share-libreoffice-online-module
